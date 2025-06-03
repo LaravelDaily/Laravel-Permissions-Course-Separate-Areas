@@ -15,6 +15,15 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    @if (auth()->user()->is_admin)
+                        <x-nav-link :href="route('admin.tasks.index')" :active="request()->routeIs('admin.tasks.index')">
+                            {{ __('Tasks') }}
+                        </x-nav-link>
+                    @else
+                        <x-nav-link :href="route('user.tasks.index')" :active="request()->routeIs('user.tasks.index')">
+                            {{ __('My Tasks') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
@@ -70,6 +79,15 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            @if (auth()->user()->is_admin)
+                <x-responsive-nav-link :href="route('admin.tasks.index')" :active="request()->routeIs('admin.tasks.index')">
+                    {{ __('Tasks') }}
+                </x-responsive-nav-link>
+            @else
+                <x-responsive-nav-link :href="route('user.tasks.index')" :active="request()->routeIs('user.tasks.index')">
+                    {{ __('My Tasks') }}
+                </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->
